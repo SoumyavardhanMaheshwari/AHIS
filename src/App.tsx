@@ -14,7 +14,12 @@ function App() {
         weather={[0, 1, 2, 3, 4, 5, 0]}
         initialDay={0}
       ></WeatherStrip>
-      <Dashboard></Dashboard>
+      <Dashboard
+        temp={"20॰ F"}
+        humidity={"98%"}
+        wind={"11kmph"}
+        time={"10 min"}
+      ></Dashboard>
     </h1>
   );
 }

@@ -16,7 +16,7 @@
     align-items: center;
     position: sticky;
     top:0.2vh;
-    background-color: rgba(238, 238, 238, 0.3);
+    background-color: rgba(238, 238, 238, 1);
     border-radius: 0 0 16px 16px;
 }
 
