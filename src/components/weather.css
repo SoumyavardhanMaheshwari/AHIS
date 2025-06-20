@@ -1,0 +1,22 @@
+*{
+    margin:0;
+    padding:0;
+    font-family:"Montserrat";
+    box-sizing:border-box;
+}
+
+.strip{
+    margin-top:7vh;
+    width:100%;
+    padding:0.1vw;
+    display: inline-flex;
+    justify-content: center;
+    background-color: #22aaff;
+}
+
+.strip img{
+    display:inline;
+    width:13%;
+    padding:3% 4% 6% 4%;
+}
+
