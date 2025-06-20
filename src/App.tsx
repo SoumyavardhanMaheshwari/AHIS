@@ -10,7 +10,10 @@ function App() {
       <Navigation></Navigation>
       <Greeting name="XYZ"></Greeting>
       <ControlPanel panelName="Smart Home 1" timer="10 min"></ControlPanel>
-      <WeatherStrip weather={[0, 1, 2, 3, 4, 5, 0]}></WeatherStrip>
+      <WeatherStrip
+        weather={[0, 1, 2, 3, 4, 5, 0]}
+        initialDay={0}
+      ></WeatherStrip>
       <Dashboard></Dashboard>
     </h1>
   );

@@ -1,22 +1,39 @@
 import "./weather.css";
-import sunny from "./assets/sunny.png";
-import rain from "./assets/rain.png";
-import heavyRain from "./assets/heavyRain.png";
-import thunderstorm from "./assets/thunderstorm.png";
-import lightningCloud from "./assets/lightningCloud.png";
-import cloud from "./assets/cloud.png";
-
-var weatherimgs = [sunny, cloud, rain, heavyRain, lightningCloud, thunderstorm];
+import DayWeather from "./DayWeather";
 function WeatherStrip(props: any) {
   return (
     <div className="strip">
-      <img src={weatherimgs[props.weather[0]]} alt="" />
-      <img src={weatherimgs[props.weather[1]]} alt="" />
-      <img src={weatherimgs[props.weather[2]]} alt="" />
-      <img src={weatherimgs[props.weather[3]]} alt="" />
-      <img src={weatherimgs[props.weather[4]]} alt="" />
-      <img src={weatherimgs[props.weather[5]]} alt="" />
-      <img src={weatherimgs[props.weather[6]]} alt="" />
+      <DayWeather
+        image={props.weather[0]}
+        day={props.initialDay % 7}
+      ></DayWeather>
+      <DayWeather
+        image={props.weather[1]}
+        day={(props.initialDay + 1) % 7}
+      ></DayWeather>
+      <DayWeather
+        image={props.weather[2]}
+        day={(props.initialDay + 2) % 7}
+      ></DayWeather>
+      <DayWeather
+        image={props.weather[3]}
+        day={(props.initialDay + 3) % 7}
+      ></DayWeather>
+
+      <DayWeather
+        image={props.weather[4]}
+        day={props.initialDay + 4}
+      ></DayWeather>
+
+      <DayWeather
+        image={props.weather[5]}
+        day={(props.initialDay + 5) % 7}
+      ></DayWeather>
+
+      <DayWeather
+        image={props.weather[6]}
+        day={(props.initialDay + 6) % 7}
+      ></DayWeather>
     </div>
   );
 }
