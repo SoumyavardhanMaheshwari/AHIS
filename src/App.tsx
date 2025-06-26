@@ -4,9 +4,10 @@ import Greeting from "./components/Greeting.tsx";
 import ControlPanel from "./components/ControlPanel.tsx";
 import WeatherStrip from "./components/WeatherStrip.tsx";
 import Dashboard from "./components/Dashboard.tsx";
-import React, { useState } from "react";
+import TimeDialPicker from "./components/TimeDial.tsx";
 
 function App() {
+  var controlName: string | null = "Smart Home 1";
   const navClick = (value: number) => {
     console.log("navbar option clicked");
   };
@@ -19,8 +20,8 @@ function App() {
       <Navigation clickHandler={navClick}></Navigation>
       <Greeting name="XYZ"></Greeting>
       <ControlPanel
-        panelName="Smart Home 1"
-        timer="10 min"
+        panelName={controlName}
+        timerTime={10}
         clickHandler={controlClick}
       ></ControlPanel>
       <WeatherStrip
