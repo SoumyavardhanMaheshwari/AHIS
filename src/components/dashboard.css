@@ -6,14 +6,16 @@
 }
 
 .dashboard{
-    margin-top:2vh;
+    margin-top:4vh;
+    display:flex;
+    flex-direction: column;
 }
 
 .dashboard div{
     width:calc( (30vw + 20vh) / 2);
     display: flex;
     justify-content: flex-start;
-    margin:2% 1%;
+    margin:0.75vh 1%;
 }
 
 .dashboard div img{

@@ -5,6 +5,7 @@ import timer from "./assets/timer.png";
 import increase from "./assets/increase.png";
 import decrease from "./assets/decrease.png";
 import TimeDialPicker from "./TimeDial";
+import { motion } from "motion/react";
 import { useState } from "react";
 
 function ControlPanel(props: any) {
@@ -25,19 +26,21 @@ function ControlPanel(props: any) {
       setPanelName(prompt("Name:", "Smart Home 1"));
     } else if (id == 4) {
       if (timerTime <= 55) {
-        for (let i = 1; i < 6; i++) {
-          setTimeout(() => {
-            setTimerTime(timerTime + i);
-          }, i * 100);
-        }
+        setTimerTime(timerTime + 5);
+        // for (let i = 1; i < 6; i++) {
+        //   setTimeout(() => {
+        //     setTimerTime(timerTime + i);
+        //   }, i * 100);
+        // }
       }
     } else if (id == 3) {
       if (timerTime >= 5) {
-        for (let i = 1; i < 6; i++) {
-          setTimeout(() => {
-            setTimerTime(timerTime - i);
-          }, i * 100);
-        }
+        setTimerTime(timerTime - 5);
+        // for (let i = 1; i < 6; i++) {
+        //   setTimeout(() => {
+        //     setTimerTime(timerTime - i);
+        //   }, i * 100);
+        // }
       }
     }
   }
@@ -45,32 +48,83 @@ function ControlPanel(props: any) {
     <div className="flexdiv">
       <div className={parentClasses}>
         <div className="vertical1">
-          <a
-            href="#"
-            onClick={() => {
-              click(1);
-              setPowerStatus(Number(!powerStatus));
+          <motion.div
+            style={{
+              borderRadius: "100%",
+            }}
+            animate={{
+              boxShadow: powerStatus
+                ? "0 0 10px rgb(132, 255, 167)"
+                : "0 0 10px rgb(250, 76, 18,0.6)",
+            }}
+            transition={{
+              repeat: !powerStatus ? 10 : 0,
+              repeatType: "reverse",
+              duration: 0.8,
             }}
           >
-            <img src={power} alt="" />
-          </a>
-          <a href="#" onClick={() => click(2)}>
-            <img src={edit} alt="" />
-          </a>
+            <span
+              onClick={() => {
+                click(1);
+                setPowerStatus(Number(!powerStatus));
+              }}
+            >
+              <img src={power} alt="" />
+            </span>
+          </motion.div>
+
+          <motion.button
+            whileTap={{ scale: 0.7 }}
+            style={{
+              border: "none",
+              outline: "none",
+              background: "transparent",
+            }}
+          >
+            <span onClick={() => click(2)}>
+              <img src={edit} alt="" />
+            </span>
+          </motion.button>
         </div>
         <div className="vertical2">{panelName}</div>
         <div className="vertical3">
           <img src={timer} className="timer" alt="" />
         </div>
         <div className="vertical4">
-          <a href="#" onClick={() => click(3)}>
-            <img src={decrease} alt="" />
-          </a>
+          <motion.button
+            whileTap={{ scale: 0.8 }}
+            style={{
+              border: "none",
+              outline: "none",
+              background: "transparent",
+            }}
+          >
+            <span onClick={() => click(3)}>
+              <img src={decrease} alt="" />
+            </span>
+          </motion.button>
 
-          <p>{String(timerTime) + "min"}</p>
-          <a href="#" onClick={() => click(4)}>
-            <img src={increase} alt="" />
-          </a>
+          <motion.div
+            key={timerTime} // this re-triggers animation when timer changes
+            initial={{ scale: 0.8, opacity: 0.6 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.2 }}
+          >
+            <p>{String(timerTime) + "min"}</p>
+          </motion.div>
+          <motion.button
+            whileTap={{ scale: 1.2 }}
+            style={{
+              border: "none",
+              outline: "none",
+              background: "transparent",
+            }}
+          >
+            <span onClick={() => click(4)}>
+              <img src={increase} alt="" />
+            </span>
+          </motion.button>
+
           {/* <TimeDialPicker></TimeDialPicker> */}
         </div>
       </div>

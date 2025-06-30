@@ -1,4 +1,283 @@
 *{
-  font-family: "Montserrat"
+  font-family: "Montserrat";
+  
 }
 
+
+
+
+.modal-container{
+  background-color:  rgba(0,0,0,0.3);
+  position:fixed;
+  top:0;
+  left:0;
+  height: 100vh;
+  width:100vw;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  transition:all 0.5s ease-out;
+  
+}
+
+
+.vanish .modal{
+  width:0;
+  min-width: 0;
+
+  transition: all 0.5s ease-out;
+}
+
+.vanish .modal *{
+  display:none;
+}
+
+.modal{
+  min-height:80vh;
+  min-width:80vw;
+  background-color: #fff;
+  border-radius: 16px;
+}
+
+
+.wifi-content{
+  padding: 2.5vh 2vh;
+  height: 75vh;
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  flex-direction: column;
+  
+}
+.modal div img{
+  margin:3vh 0 3vh 0;
+  width:calc((15vh + 15vw) / 2);
+}
+
+.wifi-options{
+  height: 55vh;
+  max-height: 50vh;
+  padding: 2.5vh 2vh;
+  border-radius: 16px;
+  background-color: #cccccc;
+  width:100%;
+  border: #eee;
+  border-width: 2px;
+  border-style: solid;
+  display:flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  
+  
+}
+.wifi-options div{
+  overflow-y:auto;
+  width:98%;
+}
+.wifi-options-container{
+  display:flex;
+  justify-content: center;
+  align-items:center;
+  flex-direction: column;
+
+}
+  
+.wifi-object{
+  height: 5vh;
+  display:flex;
+  justify-content: center;
+  align-items:flex-start;
+  letter-spacing: 0.1em;
+  padding:0 0.5vh;
+  flex-direction: column;
+  width:100%;
+  margin:1% 0;
+  border: #c7c7c7;
+  border-width: 2px;
+  border-style: solid;
+  border-radius:4px;
+}
+
+
+
+
+.setting-container{
+  background-color:  rgba(0,0,0,0.3);
+  position:fixed;
+  top:0;
+  left:0;
+  height: 100vh;
+  width:100vw;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  transition:all 0.5s ease-out;
+  
+}
+
+
+.vanish .setting{
+  width:0;
+  min-width: 0;
+
+  transition: all 0.5s ease-out;
+}
+
+.vanish .setting *{
+  display:none;
+}
+
+.setting{
+  min-height:50vh;
+  min-width:80vw;
+  background-color: #fff;
+  border-radius: 16px;
+}
+.cross-span{
+  display: flex;
+  padding:0 3%;
+  justify-content: flex-end;
+  width:100%;
+  border-radius:16px ;
+
+}
+.cross{
+  font-size: medium;
+  font-family: Montserrat;
+}
+
+.setting-content{
+  padding: 2.5vh 0.5vh 0.5vh;
+  height: 50vh;
+  display: flex;
+  justify-content:space-around;
+  align-items: center;
+  flex-direction: column;
+  
+}
+.setting div img{
+  margin:3vh 0 3vh 0;
+  width:calc((15vh + 15vw) / 2);
+}
+
+.setting-options{
+  height: 40vh;
+  max-height: 40vh;
+  padding: 2.5vh 2vh;
+  border-radius: 16px;
+  background-color: #fcfcfc;
+  width:100%;
+  border: #fafafa;
+  border-width: 2px;
+  border-style: solid;
+  display:flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  
+  
+}
+.setting-options div{
+  overflow-y:auto;
+  width:98%;
+}
+.setting-options-container{
+  display:flex;
+  justify-content: center;
+  align-items:center;
+  flex-direction: column;
+
+}
+  
+.setting-object{
+  height: 5vh;
+  display:flex;
+  justify-content: space-between;
+  align-items:center;
+  letter-spacing: 0.1em;
+  padding:0 0.5vh;
+  
+  width:100%;
+  margin:1% 0;
+  border: #f0f0f0;
+  border-width: 2px;
+  border-style: solid;
+  border-radius:4px;
+}
+
+.setting-description{
+  display: inline;
+  max-width:70%;
+}
+.vanish {
+width:0;
+}
+
+
+
+
+
+
+/*slider code*/
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slide-on + .slider {
+  background-color: #333;
+}
+.slide-on + .slider {
+  box-shadow: 0 0 1px #333;
+}
+
+
+.slide-on + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}

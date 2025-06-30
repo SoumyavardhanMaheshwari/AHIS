@@ -12,6 +12,7 @@
   "dependencies": {
     "@fseehawer/react-circular-slider": "^3.2.7",
     "bootstrap": "^5.3.7",
+    "motion": "^12.19.4",
     "react": "^19.1.0",
     "react-circular-slider": "^1.0.12",
     "react-dom": "^19.1.0"

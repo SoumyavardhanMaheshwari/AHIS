@@ -6,7 +6,7 @@
 }
 
 .flexdiv{
-    margin-top:4vh;
+    margin-top:2vh;
     width:100%;
     padding:1vw;
     display: inline-flex;
@@ -15,11 +15,11 @@
 }
 
 .controlGreen{
-    background-color: #84ffa7;
+    background-color: rgb(132, 255, 167);
 }
 
 .controlRed{
-    background-color: #fa4c12;
+    background-color: rgb(250, 76, 18);
 }
 
 .controlParent{
@@ -67,6 +67,7 @@
     font-size: medium;
     font-weight: 500;
     transition: all 1s ease-in;
+    min-height: 4vh;
 }
 
 .timer{
