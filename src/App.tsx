@@ -7,14 +7,62 @@ import Dashboard from "./components/Dashboard.tsx";
 import TimeDialPicker from "./components/TimeDial.tsx";
 import { motion } from "motion/react";
 import WifiModal from "./components/WifiModal.tsx";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import SettingModal from "./components/SettingModal.tsx";
 import Slider from "./components/Slider.tsx";
+import Picker from "react-mobile-picker";
+import ScheduleMenu from "./components/ScheduleMenu.tsx";
 
 function App() {
+  const dateToday = new Date();
   const [wifiMenu, enableWifiMenu] = useState(0);
   const [settingMenu, enableSettingMenu] = useState(0);
+  const [scheduleMenuState, toggleScheduleMenuState] = useState(0);
 
+  const [schedules, setSchedules] = useState([]);
+  async function sendPostRequest(data: any) {
+    const hour = parseInt(data.hour);
+    const minutes = parseInt(data.minute);
+    const duration =
+      hour * 60 + minutes + Math.floor(parseInt(data.second) / 60);
+
+    const payload = { hour, minutes, duration };
+
+    console.log("Sending payload:", payload);
+
+    try {
+      const res = await fetch("http://127.0.0.1:8000/schedule/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const responseData = await res.json().catch(() => ({}));
+
+      if (!res.ok) {
+        console.error("Backend rejected request:", responseData);
+        throw new Error("Bad Request");
+      }
+
+      console.log("Successfully posted:", responseData);
+      return responseData;
+    } catch (err) {
+      console.error("Error posting task:", err);
+    }
+  }
+  function fetchScheduleList() {
+    fetch("http://127.0.0.1:8000/schedule/")
+      .then((response) => response.json())
+      .then((data) => setSchedules(data))
+      .catch((error) => console.error("Error fetching schedule:", error));
+  }
+  useEffect(() => {
+    fetchScheduleList();
+  }, []);
+  console.log(schedules);
+  console.log([wifiMenu, settingMenu]);
   var controlName: string | null = "Smart Home 1";
   const navClick = (value: number) => {
     console.log("navbar option clicked");
@@ -26,6 +74,26 @@ function App() {
   };
   const controlClick = (value: number) => {
     console.log("control panel option clicked");
+    if (value == 4) {
+      toggleScheduleMenuState(Number(!scheduleMenuState));
+    }
+  };
+  const scheduleAddTask = (taskData: any) => {
+    var startTime = taskData[0];
+    var duration = taskData[1];
+    var newSchedule = {
+      hour: duration.hour,
+      minute: duration.minute,
+      second: duration.second,
+      time: startTime.time,
+      date: startTime.date,
+    };
+    console.log(newSchedule);
+    // sendPostRequest(newSchedule).then((createdTask) => {
+    //   if (createdTask) {
+    //     fetchScheduleList();
+    //   }
+    // });
   };
   const wifiCallback = (value: number) => {
     console.log("selected wifi:" + String(value));
@@ -36,7 +104,7 @@ function App() {
   };
 
   return (
-    <div className="">
+    <div className="app">
       <Navigation clickHandler={navClick}></Navigation>
       <motion.div
         initial={{ opacity: 0.3, y: 30 }}
@@ -50,10 +118,11 @@ function App() {
         panelName={controlName}
         timerTime={10}
         clickHandler={controlClick}
+        schedules={schedules}
       ></ControlPanel>
       <WeatherStrip
         weather={[1, 1, 2, 1, 3, 1, 5]}
-        initialDay={3}
+        initialDay={dateToday.getDay()}
       ></WeatherStrip>
       <Dashboard
         temp={"20॰ F"}
@@ -79,7 +148,13 @@ function App() {
       <SettingModal
         toggle={enableSettingMenu}
         settingState={settingMenu}
+        settingClick={settingClick}
       ></SettingModal>
+      <ScheduleMenu
+        scheduleMenuState={scheduleMenuState}
+        toggleScheduleMenuState={toggleScheduleMenuState}
+        scheduleAddTaskCallback={scheduleAddTask}
+      ></ScheduleMenu>
     </div>
   );
 }

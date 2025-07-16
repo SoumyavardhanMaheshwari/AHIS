@@ -4,7 +4,9 @@
 }
 
 
-
+.app{
+  height:100vh;
+}
 
 .modal-container{
   background-color:  rgba(0,0,0,0.3);
@@ -149,17 +151,44 @@
 
 .setting-content{
   padding: 2.5vh 0.5vh 0.5vh;
-  height: 50vh;
+  min-height: 50vh;
   display: flex;
   justify-content:space-around;
   align-items: center;
   flex-direction: column;
   
 }
+
+.schedule-menu-option{
+  width:80%;
+  text-align:center;
+  margin:2vh 0 5vh;
+}
+
+.schedule-menu-option span{
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  width:calc((6vh + 6vw) / 2);
+  height:calc((6vh + 6vw) / 2);
+  font-size:3vh;
+  color:#323532;
+  font-weight:700;
+  border-radius: 100%;
+  border:none;
+  background-color: #71a034;
+  
+}
+
+.schedule-menu-option p{
+  margin-bottom: 1vh;
+}
 .setting div img{
   margin:3vh 0 3vh 0;
   width:calc((15vh + 15vw) / 2);
 }
+
 
 .setting-options{
   height: 40vh;
@@ -280,4 +309,96 @@ width:0;
 
 .slider.round:before {
   border-radius: 50%;
+}
+
+.font-semibold{
+  font-weight: 800;
+}
+
+.dark-background{
+  background-color: #333 !important;
+  color:#c7c7c7 !important;
+}
+
+.dark-background{
+  background-color: #333 !important;
+  color:#c7c7c7 !important;
+}
+
+.dark-background-nav{
+   background-color: #111 !important;
+  color:#c7c7c7 !important;
+}
+
+
+.vertical5{
+  display:flex;
+  justify-content: center;
+  align-items:center;
+  flex-direction: column;
+  width:100%;
+}
+
+.task-view{
+   display:flex;
+  justify-content: flex-start;
+  align-items:center;
+  flex-direction: column;
+  height:18vh;
+  width:95%;
+  background-color:rgba(220,220,220,0.2);
+  border-radius:calc((2vh + 2vw) / 2);
+  border:rgba(128,32,32, 0.5) solid;
+
+  border-width:1px;
+  
+  overflow-y:auto;
+  scrollbar-width: none;
+}
+
+.task-view > div{
+  width:100%;
+  padding:0.25vh 0 !important;
+  margin:0;
+}
+
+.task{
+  height:5vh;
+  border: solid rgba(200,200,200,0.1) calc((0.2vh + 0.2vw) / 2);
+  border-radius: calc((2vh + 2vw) / 2);
+  width:100%;
+  background-color: rgba(0,0,0,0.2);
+  display: flex;
+  color:#000;
+  font-weight: 600;
+  /*
+  justify-content: space-between; */
+  align-items: center;
+  padding: 0 !important;
+
+
+}
+.task > div{
+  display:inline;
+} 
+
+.task-datetime{
+  width:45%;
+  text-align: center;
+  
+}
+.task-duration{
+  text-align: center;
+  width:35%;
+}
+
+.vertical-division{
+  width:1px;
+  height:100%;
+  background-color: #000;
+  padding:0 !important;
+  border-radius:calc((2vh + 2vw) / 2);
+  border: solid rgba(0,0,0,0.7);
+  border-width:0.1px;
+
 }

@@ -6,7 +6,7 @@ import thunderstorm from "./assets/thunderstorm.png";
 import lightningCloud from "./assets/lightningCloud.png";
 import cloud from "./assets/cloud.png";
 var weatherimgs = [sunny, cloud, rain, heavyRain, lightningCloud, thunderstorm];
-var days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+var days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
 function DayWeather(props: any) {
   return (

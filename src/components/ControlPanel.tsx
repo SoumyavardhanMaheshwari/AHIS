@@ -7,6 +7,7 @@ import decrease from "./assets/decrease.png";
 import TimeDialPicker from "./TimeDial";
 import { motion } from "motion/react";
 import { useState } from "react";
+import TaskView from "./TaskView";
 
 function ControlPanel(props: any) {
   const [powerStatus, setPowerStatus] = useState(0);
@@ -54,8 +55,8 @@ function ControlPanel(props: any) {
             }}
             animate={{
               boxShadow: powerStatus
-                ? "0 0 10px rgb(132, 255, 167)"
-                : "0 0 10px rgb(250, 76, 18,0.6)",
+                ? "0 0 10px rgb(122, 146, 83)"
+                : "0 0 10px rgb(128,0,0,1)",
             }}
             transition={{
               repeat: !powerStatus ? 10 : 0,
@@ -86,32 +87,15 @@ function ControlPanel(props: any) {
             </span>
           </motion.button>
         </div>
-        <div className="vertical2">{panelName}</div>
-        <div className="vertical3">
-          <img src={timer} className="timer" alt="" />
-        </div>
-        <div className="vertical4">
-          <motion.button
-            whileTap={{ scale: 0.8 }}
-            style={{
-              border: "none",
-              outline: "none",
-              background: "transparent",
-            }}
-          >
-            <span onClick={() => click(3)}>
-              <img src={decrease} alt="" />
-            </span>
-          </motion.button>
 
-          <motion.div
-            key={timerTime} // this re-triggers animation when timer changes
-            initial={{ scale: 0.8, opacity: 0.6 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.2 }}
-          >
-            <p>{String(timerTime) + "min"}</p>
-          </motion.div>
+        <div className="vertical2">{panelName}</div>
+
+        <div className="vertical5">
+          <TaskView schedules={props.schedules}></TaskView>
+        </div>
+
+        <div className="vertical3">Add Schedule Task</div>
+        <div className="vertical4">
           <motion.button
             whileTap={{ scale: 1.2 }}
             style={{

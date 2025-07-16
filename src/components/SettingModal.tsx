@@ -18,6 +18,7 @@ function SettingModal(props: any) {
           initial={{ opacity: 0.3, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
+          className="modal-type"
         >
           <div className="setting">
             <span

@@ -6,16 +6,23 @@
 }
 
 .dashboard{
-    margin-top:4vh;
-    display:flex;
-    flex-direction: column;
+    padding:1vh 0.5vw;
+    display:grid;
+    grid-template-columns: auto auto;
+    width: 100%;;
 }
 
 .dashboard div{
-    width:calc( (30vw + 20vh) / 2);
+    
     display: flex;
-    justify-content: flex-start;
-    margin:0.75vh 1%;
+    justify-content: center;
+    margin:0.2vh 1%;
+    background-color: #efefef;
+    padding:2vh 2vw;
+    border-radius:16px;
+    border-color: #f9f9f9 ;
+    border-width: 2px;
+    border-style: solid;
 }
 
 .dashboard div img{

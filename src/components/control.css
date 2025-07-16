@@ -15,11 +15,11 @@
 }
 
 .controlGreen{
-    background-color: rgb(132, 255, 167);
+    background-color: rgb(122, 146, 83);
 }
 
 .controlRed{
-    background-color: rgb(250, 76, 18);
+    background-color: rgb(248, 81, 81);
 }
 
 .controlParent{
@@ -33,6 +33,10 @@
     flex-direction: column;
     transition: all 0.5s ease-out;
 }
+.vertical4{
+    padding:0 !important;
+}
+
 
 .controlParent div{
     padding:1vh;
@@ -50,10 +54,16 @@
 .vertical1, .vertical4 {
     display:flex;
     justify-content: space-between;
-    width:100%;
+    width:98%;
+    
+    
+}
+
+
+
+.vertical1{
+    margin:1vh 1vw 0;
     padding: 2vh 2vw 0 2vw;
-    
-    
 }
 
 .vertical1 img, .vertical4 img{

@@ -12,6 +12,8 @@ function Slider(props: any) {
       className="switch"
       onClick={() => {
         setPosition(Number(!position));
+        props.toggleStat(Number(!props.stat));
+        console.log("switched slider");
       }}
     >
       <span className={slideState}></span>
