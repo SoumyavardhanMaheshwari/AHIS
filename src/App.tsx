@@ -22,11 +22,12 @@ function App() {
   const [schedules, setSchedules] = useState([]);
   async function sendPostRequest(data: any) {
     const hour = parseInt(data.hour);
-    const minutes = parseInt(data.minute);
-    const duration =
-      hour * 60 + minutes + Math.floor(parseInt(data.second) / 60);
+    const minute = parseInt(data.minute);
+    const second = parseInt(data.second);
+    const start_datetime = data.start_datetime;
+    const duration = data.duration;
 
-    const payload = { hour, minutes, duration };
+    const payload = { start_datetime, duration, hour, minute, second };
 
     console.log("Sending payload:", payload);
 
@@ -87,13 +88,16 @@ function App() {
       second: duration.second,
       time: startTime.time,
       date: startTime.date,
+      start_datetime: startTime.date + "T" + startTime.time + ":00Z",
+      duration: duration.hour + ":" + duration.minute + ":" + duration.second,
     };
     console.log(newSchedule);
-    // sendPostRequest(newSchedule).then((createdTask) => {
-    //   if (createdTask) {
-    //     fetchScheduleList();
-    //   }
-    // });
+
+    sendPostRequest(newSchedule).then((createdTask) => {
+      if (createdTask) {
+        fetchScheduleList();
+      }
+    });
   };
   const wifiCallback = (value: number) => {
     console.log("selected wifi:" + String(value));

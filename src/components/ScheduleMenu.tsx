@@ -164,23 +164,23 @@ function ScheduleMenu(props: any) {
                   itemHeight={40}
                 >
                   <Picker.Column name="hour">
-                    {Array.from({ length: 24 }, (_, i) => `${i}`).map(
-                      (hour) => (
-                        <Picker.Item key={hour} value={hour}>
-                          {({ selected }) => (
-                            <div
-                              className={
-                                selected
-                                  ? "font-semibold text-neutral-900"
-                                  : "text-neutral-400"
-                              }
-                            >
-                              {hour}
-                            </div>
-                          )}
-                        </Picker.Item>
-                      )
-                    )}
+                    {Array.from({ length: 24 }, (_, i) =>
+                      String(i).padStart(2, "0")
+                    ).map((hour) => (
+                      <Picker.Item key={hour} value={hour}>
+                        {({ selected }) => (
+                          <div
+                            className={
+                              selected
+                                ? "font-semibold text-neutral-900"
+                                : "text-neutral-400"
+                            }
+                          >
+                            {hour}
+                          </div>
+                        )}
+                      </Picker.Item>
+                    ))}
                   </Picker.Column>
                   <Picker.Column name="minute">
                     {Array.from({ length: 60 }, (_, i) =>
@@ -233,7 +233,7 @@ function ScheduleMenu(props: any) {
                 >
                   <Picker.Column name="date">
                     {getNext30Days().map((date: any) => (
-                      <Picker.Item key={date.label} value={date.label}>
+                      <Picker.Item key={date.label} value={date.value}>
                         {({ selected }) => (
                           <div
                             className={

@@ -368,7 +368,8 @@ width:0;
   border-radius: calc((2vh + 2vw) / 2);
   width:100%;
   background-color: rgba(0,0,0,0.2);
-  display: flex;
+  display: grid;
+  grid-template-columns: 45% 1px 35%  1px 15%;
   color:#000;
   font-weight: 600;
   /*
@@ -383,13 +384,13 @@ width:0;
 } 
 
 .task-datetime{
-  width:45%;
+  /* width:40%; */
   text-align: center;
   
 }
 .task-duration{
   text-align: center;
-  width:35%;
+  /* width:40%; */
 }
 
 .vertical-division{
@@ -400,5 +401,14 @@ width:0;
   border-radius:calc((2vh + 2vw) / 2);
   border: solid rgba(0,0,0,0.7);
   border-width:0.1px;
+}
+.delete-task{
+  /* width:20%; */
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
 
+.delete-task > img{
+  width:100%;
 }

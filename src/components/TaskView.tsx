@@ -4,10 +4,14 @@ import { useState, useEffect } from "react";
 import Task from "./Task";
 
 function TaskView(props: any) {
+  function taskDeletion(id: any) {
+    //logic to handle deletion -  send delete request
+    console.log(id);
+  }
   return (
     <div className="task-view">
       {props.schedules.map((task: any) => (
-        <Task data={task}></Task>
+        <Task data={task} taskDeletion={taskDeletion}></Task>
       ))}
     </div>
   );
