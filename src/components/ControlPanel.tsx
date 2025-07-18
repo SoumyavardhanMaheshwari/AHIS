@@ -91,7 +91,10 @@ function ControlPanel(props: any) {
         <div className="vertical2">{panelName}</div>
 
         <div className="vertical5">
-          <TaskView schedules={props.schedules}></TaskView>
+          <TaskView
+            schedules={props.schedules}
+            refreshTaskList={props.refreshTaskList}
+          ></TaskView>
         </div>
 
         <div className="vertical3">Add Schedule Task</div>

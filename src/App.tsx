@@ -19,7 +19,17 @@ function App() {
   const [settingMenu, enableSettingMenu] = useState(0);
   const [scheduleMenuState, toggleScheduleMenuState] = useState(0);
 
-  const [schedules, setSchedules] = useState([]);
+  type Schedule = {
+    hour: number;
+    minute: number;
+    second: number;
+    time?: string;
+    date?: string;
+    start_datetime: string;
+    duration: string;
+    [key: string]: any;
+  };
+  const [schedules, setSchedules] = useState<Schedule[]>([]);
   async function sendPostRequest(data: any) {
     const hour = parseInt(data.hour);
     const minute = parseInt(data.minute);
@@ -59,14 +69,15 @@ function App() {
       .then((data) => setSchedules(data))
       .catch((error) => console.error("Error fetching schedule:", error));
   }
+
+  function refreshScheduleList() {
+    fetchScheduleList();
+  }
   useEffect(() => {
     fetchScheduleList();
   }, []);
-  console.log(schedules);
-  console.log([wifiMenu, settingMenu]);
   var controlName: string | null = "Smart Home 1";
   const navClick = (value: number) => {
-    console.log("navbar option clicked");
     if (value == 2) {
       enableWifiMenu(Number(!wifiMenu));
     } else if (value == 3) {
@@ -74,7 +85,6 @@ function App() {
     }
   };
   const controlClick = (value: number) => {
-    console.log("control panel option clicked");
     if (value == 4) {
       toggleScheduleMenuState(Number(!scheduleMenuState));
     }
@@ -91,8 +101,13 @@ function App() {
       start_datetime: startTime.date + "T" + startTime.time + ":00Z",
       duration: duration.hour + ":" + duration.minute + ":" + duration.second,
     };
-    console.log(newSchedule);
 
+    for (const schedule in schedules) {
+      if (schedules[schedule].start_datetime === newSchedule.start_datetime) {
+        console.log("Schedule already exists for this time.");
+        return;
+      }
+    }
     sendPostRequest(newSchedule).then((createdTask) => {
       if (createdTask) {
         fetchScheduleList();
@@ -123,6 +138,7 @@ function App() {
         timerTime={10}
         clickHandler={controlClick}
         schedules={schedules}
+        refreshTaskList={refreshScheduleList}
       ></ControlPanel>
       <WeatherStrip
         weather={[1, 1, 2, 1, 3, 1, 5]}
