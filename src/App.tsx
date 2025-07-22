@@ -140,10 +140,7 @@ function App() {
         schedules={schedules}
         refreshTaskList={refreshScheduleList}
       ></ControlPanel>
-      <WeatherStrip
-        weather={[1, 1, 2, 1, 3, 1, 5]}
-        initialDay={dateToday.getDay()}
-      ></WeatherStrip>
+      <WeatherStrip initialDay={dateToday.getDay()}></WeatherStrip>
       <Dashboard
         temp={"20॰ F"}
         humidity={"98%"}
